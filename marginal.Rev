@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 burninGen = 20000
 runGen = 1200
 steps = 51
@@ -25,57 +24,26 @@ power_p.burnin(generations = burninGen, tuningInterval = 1000)
 print("  - Commencing powerPosterior run")
 power_p.run(generations = runGen)
 
-=======
-neo <- readDiscreteCharacterData("project563.neo.nex")
-trans <- readDiscreteCharacterData("project563.trans.nex")
-logFile = "563_by_n_ki.log"
-paramFile = "563_by_n_ki.p.log"
-treeFile = "563_by_n_ki.trees"
-ckpFile = "563_by_n_ki.ckp"
-ppFile = "563_by_n_ki.pp"
-source("by_n_ki.Rev")
-
-power_p = powerPosterior(mymodel, monitors, moves, ppFile, cats = 25)
-print("  - Created powerPosterior object")
-
-power_p.burnin(generations = 10000, tuningInterval = 1000)
-print("  - Commencing powerPosterior run")
-power_p.run(generations = 1000)
->>>>>>> 43adcf2 (Generate by_n_ki script files)
 
 ss = steppingStoneSampler(
   file = ppFile,
   powerColumnName = "power",
   likelihoodColumnName = "likelihood"
 )
-<<<<<<< HEAD
 write(ss.marginal(), file = ppOut)
 print("  Stepping stone marginal likelihood:")
 ss.marginal()
 
 
-=======
-write(ss.marginal(), file = "563_by_n_ki.out.pp")
-print("  Stepping stone marginal likelihood:")
-ss.marginal()
-
->>>>>>> 43adcf2 (Generate by_n_ki script files)
 ps = pathSampler(
   file = ppFile,
   powerColumnName = "power",
   likelihoodColumnName = "likelihood"
 )
-<<<<<<< HEAD
 write(ss.marginal(), ps.marginal(), burninGen, runGen, steps, "\n", file = ppOut)
 print("  Path sampler marginal likelihood:")
 ps.marginal()
 
 
-=======
-write(ss.marginal(), ps.marginal(), file = "563_by_n_ki.out.pp")
-print("  Path sampler marginal likelihood:")
-ps.marginal()
-
->>>>>>> 43adcf2 (Generate by_n_ki script files)
 print("  # # # RUN COMPLETE # # #  ")
 q()
